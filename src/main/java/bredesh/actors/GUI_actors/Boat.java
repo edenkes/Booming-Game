@@ -18,11 +18,11 @@ public class Boat extends GUI_Actor {
         }
 
         if (direction == GameManager.Direction.LEFT) {
-            if (locationActor.isOutOfLeftFrame()) {
+            if (!locationActor.isOutOfLeftFrame()) {
                 locationActor.moveLeft();
             }
         } else {
-            if (locationActor.isOutOfRightFrame()) {
+            if (!locationActor.isOutOfRightFrame()) {
 
                 locationActor.moveRight();
             }
