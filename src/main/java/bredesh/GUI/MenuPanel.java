@@ -58,10 +58,10 @@ public class MenuPanel extends JPanel implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         if (e.getSource().equals(lbPlay)) {
-            guiManager.getGamePanel().setGameStatus(GameManager.GameStatus.RUNNING);
+            guiManager.setGameStatus(GameManager.GameStatus.RUNNING);
             guiManager.showNewGame();
         } else if (e.getSource().equals(lbExit)) {
-            guiManager.getGamePanel().setGameStatus(GameManager.GameStatus.GAME_OVER);
+            guiManager.setGameStatus(GameManager.GameStatus.GAME_OVER);
             guiManager.exit();
         }
     }

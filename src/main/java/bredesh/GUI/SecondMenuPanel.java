@@ -63,11 +63,11 @@ public class SecondMenuPanel extends JPanel implements MouseListener{
     @Override
     public void mousePressed(MouseEvent e) {
         if(e.getSource().equals(lbPlay)){
-            guiManager.getGamePanel().setGameStatus(GameManager.GameStatus.RUNNING);
+            guiManager.setGameStatus(GameManager.GameStatus.RUNNING);
             guiManager.showPlayGame();
         }
         else if(e.getSource().equals(lbNewGame)){
-            guiManager.getGamePanel().setGameStatus(GameManager.GameStatus.PAUSE);
+            guiManager.setGameStatus(GameManager.GameStatus.PAUSE);
             guiManager.showNewGame();
         }
         else if(e.getSource().equals(lbExit)){

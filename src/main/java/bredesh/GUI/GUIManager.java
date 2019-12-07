@@ -8,9 +8,9 @@ import java.awt.*;
 import static bredesh.GUI.GUIConstants.*;
 
 public class GUIManager extends JPanel {
+    private CardLayout cardLayout;
     private GamePanel gamePanel;
     private MenuPanel menuPanel;
-    private CardLayout cardLayout;
     private SecondMenuPanel secondMenuPanel;
 
     public GUIManager(CardLayout cardLayout) {
@@ -50,12 +50,8 @@ public class GUIManager extends JPanel {
     }
 
     void exit() {
-        gamePanel.setGameStatus(GameManager.GameStatus.GAME_OVER);
+        setGameStatus(GameManager.GameStatus.GAME_OVER);
         System.exit(0);
-    }
-
-    GamePanel getGamePanel() {
-        return gamePanel;
     }
 
     public void initGamePanel() {
@@ -63,5 +59,9 @@ public class GUIManager extends JPanel {
         gamePanel.addKeyListener(gamePanel);
         Thread thread = new Thread(gamePanel);
         thread.start();
+    }
+
+    void setGameStatus(GameManager.GameStatus gameStatus) {
+        gamePanel.setGameStatus(gameStatus);
     }
 }
