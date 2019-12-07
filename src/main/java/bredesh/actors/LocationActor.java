@@ -16,11 +16,11 @@ public class LocationActor {
         this.height = height;
     }
 
-    int getY() {
+    public int getY() {
         return y;
     }
 
-    int getX() {
+    public int getX() {
         return x;
     }
 

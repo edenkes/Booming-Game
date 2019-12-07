@@ -1,6 +1,8 @@
 package bredesh.GUI;
 
 
+import bredesh.actors.GUI_actors.GUI_Actor;
+import bredesh.actors.GUI_actors.Parachutist;
 import bredesh.actors.GameConstants;
 import bredesh.actors.GameManager;
 import bredesh.actors.GeneratorImageActors;
@@ -37,7 +39,35 @@ public class GamePanel extends JPanel implements KeyListener, Runnable, MouseLis
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        gameManager.drawGame(g2d);
+        drawGame(g2d);
+    }
+
+    private synchronized void drawGame(Graphics2D g2d) {
+        drawActor(g2d, GameManager.Actor.Background);
+        drawActor(g2d, GameManager.Actor.Boat);
+        drawParachutists(g2d);
+        drawActor(g2d, GameManager.Actor.Airplane);
+        drawActor(g2d, GameManager.Actor.Sea);
+
+        drawInfo(g2d);
+    }
+
+    private void drawActor(Graphics2D g2d, GameManager.Actor actorType) {
+        GUI_Actor actor = gameManager.getActor(actorType);
+        g2d.drawImage(actor.getImage(), actor.getLocationActor().getX(), actor.getLocationActor().getY(), null);
+    }
+
+    private void drawParachutists(Graphics2D g2d) {
+        for (Parachutist parachutist : gameManager.getParachutists()) {
+            g2d.drawImage(parachutist.getImage(), parachutist.getLocationActor().getX(), parachutist.getLocationActor().getY(), null);
+        }
+    }
+
+    private void drawInfo(Graphics2D g2d) {
+        g2d.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        g2d.drawString(String.format("Your Heart: %d", gameManager.getHearts()), GameConstants.HEART_X, GameConstants.HEART_Y);
+        g2d.drawString(String.format("Your Score: %d", gameManager.getScore()), GameConstants.SCORE_X, GameConstants.SCORE_Y);
     }
 
     @Override
@@ -47,7 +77,6 @@ public class GamePanel extends JPanel implements KeyListener, Runnable, MouseLis
     @Override
     public void keyPressed(KeyEvent e) {
         this.keyPressedEvent = e.getKeyCode();
-
     }
 
     @Override
@@ -57,7 +86,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable, MouseLis
 
     @Override
     public void run() {
-        while (true)
+        while (true) {
             switch (gameManager.getGameStatus()) {
                 case GAME_OVER:
                     guiManager.showMenu();
@@ -86,6 +115,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable, MouseLis
                     break;
 
             }
+        }
     }
 
     @Override

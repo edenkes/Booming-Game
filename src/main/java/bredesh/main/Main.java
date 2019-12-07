@@ -20,8 +20,7 @@ public class Main {
                 (Background) GeneratorActors.generateActors(GameManager.Actor.Background),
                 (Sea) GeneratorActors.generateActors(GameManager.Actor.Sea),
                 (Boat) GeneratorActors.generateActors(GameManager.Actor.Boat),
-                (Airplane) GeneratorActors.generateActors(GameManager.Actor.Airplane),
-                new ArrayList<>());
+                (Airplane) GeneratorActors.generateActors(GameManager.Actor.Airplane));
 
         GamePanel panelGame = new GamePanel(mangerGUI, mangerGame);
         mangerGUI.setPanel(new MenuPanel(mangerGUI), new SecondMenuPanel(mangerGUI), panelGame);

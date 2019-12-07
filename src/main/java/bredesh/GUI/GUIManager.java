@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GUIManager extends JPanel{
-
     private GamePanel gamePanel;
     private MenuPanel menuPanel;
     private CardLayout cardLayout;
@@ -14,7 +13,7 @@ public class GUIManager extends JPanel{
 
     private static String MENU_TAG = "menu";
     private static String SUB_MENU_TAG = "submenu";
-    private static String PLAYGAME_TAG = "playgame";
+    private static String PLAY_GAME_TAG = "play_game";
 
 
     public GUIManager(CardLayout cardLayout){
@@ -28,7 +27,7 @@ public class GUIManager extends JPanel{
         this.secondMenuPanel = secondMenuPanel;
         add(secondMenuPanel, SUB_MENU_TAG);
         this.gamePanel = gamePanel;
-        add(gamePanel, PLAYGAME_TAG);
+        add(gamePanel, PLAY_GAME_TAG);
     }
 
     public void showMenu(){
@@ -42,13 +41,13 @@ public class GUIManager extends JPanel{
     }
 
     void showPlayGame(){
-        cardLayout.show(this, PLAYGAME_TAG);
+        cardLayout.show(this, PLAY_GAME_TAG);
         gamePanel.requestFocus();
     }
 
     void showNewGame(){
         gamePanel.resetGame();
-        cardLayout.show(this, PLAYGAME_TAG);
+        cardLayout.show(this, PLAY_GAME_TAG);
         gamePanel.requestFocus();
     }
 

@@ -5,19 +5,17 @@ import bredesh.actors.GUI_actors.*;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GameManager {
-    private Background background;
-    private Sea sea;
-    private Boat boat;
-    private Airplane airplane;
     private ArrayList<Parachutist> parachutists;
     private GameStatus gameStatus;
     private int timeToDrop;
     private int score;
     private int hearts;
-
+    private Map<Actor, GUI_Actor> actors;
 
     public enum Direction {
         RIGHT,
@@ -38,76 +36,38 @@ public class GameManager {
         GAME_OVER,
     }
 
-    public void initGame(Background background, Sea sea, Boat boat, Airplane airplane, ArrayList<Parachutist> parachutists) {
-        this.background = background;
-        this.sea = sea;
-        this.boat = boat;
-        this.airplane = airplane;
-        this.parachutists = parachutists;
+    public void initGame(Background background, Sea sea, Boat boat, Airplane airplane) {
+        actors = new HashMap<>();
+        actors.put(Actor.Background, background);
+        actors.put(Actor.Sea, sea);
+        actors.put(Actor.Boat, boat);
+        actors.put(Actor.Airplane, airplane);
+        this.parachutists = new ArrayList<>();
 
-        gameStatus = GameStatus.RUNNING;
-        timeToDrop = 200;
-        score = 0;
-        hearts = 3;
+        initFields();
     }
 
     public void resetGame() {
-        gameStatus = GameStatus.RUNNING;
-        timeToDrop = 200;
-        score = 0;
-        hearts = 3;
+        initFields();
 
-        boat.getLocationActor().resetToInitial();
-        airplane.getLocationActor().resetToInitial();
+        actors.get(Actor.Boat).getLocationActor().resetToInitial();
+        actors.get(Actor.Airplane).getLocationActor().resetToInitial();
         parachutists = new ArrayList<>();
     }
 
-
-    public synchronized void drawGame(Graphics2D g2d) {
-        drawBackGround(g2d);
-        drawBoat(g2d);
-        drawParachutists(g2d);
-        drawAirplane(g2d);
-        drawSea(g2d);
-
-        drawInfo(g2d);
-    }
-
-    private void drawBackGround(Graphics2D g2d) {
-        g2d.drawImage(background.getImage(), background.getLocationActor().getX(), background.getLocationActor().getY(), null);
-    }
-
-    private void drawSea(Graphics2D g2d) {
-        g2d.drawImage(sea.getImage(), sea.getLocationActor().getX(), sea.getLocationActor().getY(), null);
-    }
-
-    private void drawBoat(Graphics2D g2d) {
-        g2d.drawImage(boat.getImage(), boat.getLocationActor().getX(), boat.getLocationActor().getY(), null);
-    }
-
-    private void drawAirplane(Graphics2D g2d) {
-        g2d.drawImage(airplane.getImage(), airplane.getLocationActor().getX(), airplane.getLocationActor().getY(), null);
-    }
-
-    private void drawParachutists(Graphics2D g2d) {
-        for (Parachutist parachutist : parachutists) {
-            g2d.drawImage(parachutist.getImage(), parachutist.getLocationActor().getX(), parachutist.getLocationActor().getY(), null);
-        }
-    }
-
-    private void drawInfo(Graphics2D g2d) {
-        g2d.setFont(new Font("Arial", Font.PLAIN, 20));
-
-        g2d.drawString(String.format("Your Heart: %d", hearts), GameConstants.HEART_X, GameConstants.HEART_Y);
-        g2d.drawString(String.format("Your Score: %d", score), GameConstants.SCORE_X, GameConstants.SCORE_Y);
+    private void initFields() {
+        gameStatus = GameStatus.RUNNING;
+        timeToDrop = GameConstants.TIME_TO_DROP_P;
+        score = GameConstants.SCORE;
+        hearts = GameConstants.HEARTS;
     }
 
     public void moveBoat(Direction direction) {
-        boat.move(direction);
+        actors.get(Actor.Boat).move(direction);
     }
 
     public void moveAirplane() {
-        airplane.moveAirplane();
+        actors.get(Actor.Airplane).move();
     }
 
     public void moveParachutists() {
@@ -120,7 +80,7 @@ public class GameManager {
         if (timeToDrop-- == 0) {
             timeToDrop = ThreadLocalRandom.current().nextInt(100, 10000);
             Image imageActors = GeneratorImageActors.generateImageActors(Actor.Parachutist);
-            LocationActor locationActors = GeneratorLocationActors.generateLocationActors(airplane.getLocationActor(), imageActors);
+            LocationActor locationActors = GeneratorLocationActors.generateLocationActors(actors.get(Actor.Airplane).getLocationActor(), imageActors);
             parachutists.add((Parachutist) GeneratorActors.generateActors(Actor.Parachutist, locationActors, imageActors));
         }
     }
@@ -128,10 +88,10 @@ public class GameManager {
     public void checkParachutistLocation() {
         ArrayList<Parachutist> parachutistsToRemove = new ArrayList<>();
         for (Parachutist parachutist : parachutists) {
-            if (parachutist.getLocationActor().isTouching(boat.getLocationActor())) {
+            if (parachutist.getLocationActor().isTouching(actors.get(Actor.Boat).getLocationActor())) {
                 parachutistsToRemove.add(parachutist);
                 managedToCatch();
-            } else if (parachutist.getLocationActor().isTouching(sea.getLocationActor())) {
+            } else if (parachutist.getLocationActor().isTouching(actors.get(Actor.Sea).getLocationActor())) {
                 parachutistsToRemove.add(parachutist);
                 failedToCatch();
             }
@@ -152,16 +112,28 @@ public class GameManager {
         score++;
     }
 
-    public GameStatus getGameStatus() {
-        return gameStatus;
-    }
 
     public void setGameStatus(GameStatus gameStatus) {
         this.gameStatus = gameStatus;
     }
 
+    public GameStatus getGameStatus() {
+        return gameStatus;
+    }
+
+    public GUI_Actor getActor(Actor actor) {
+        return actors.get(actor);
+    }
+
+    public ArrayList<Parachutist> getParachutists() {
+        return parachutists;
+    }
+
+    public int getHearts() {
+        return hearts;
+    }
+
     public int getScore() {
         return score;
     }
-
 }
