@@ -1,5 +1,7 @@
 package bredesh.actors;
 
+import bredesh.actors.GUIActors.*;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,19 +10,19 @@ public class GeneratorImageActors {
         String image_url = "";
         switch (actor){
             case Background:
-                image_url = GameConstants.BACKGROUND_IMAGE;
+                image_url = Background.BACKGROUND_IMAGE;
                 break;
             case Sea:
-                image_url = GameConstants.SEA_IMAGE;
+                image_url = Sea.SEA_IMAGE;
                 break;
             case Boat:
-                image_url = GameConstants.BOAT_IMAGE;
+                image_url = Boat.BOAT_IMAGE;
                 break;
             case Airplane:
-                image_url = GameConstants.AIRPLANE_IMAGE;
+                image_url = Airplane.AIRPLANE_IMAGE;
                 break;
             case Parachutist:
-                image_url = GameConstants.PARACHUTIST_IMAGE;
+                image_url = Parachutist.PARACHUTIST_IMAGE;
                 break;
         }
         return generateImageActors(image_url);

@@ -3,7 +3,6 @@ package bredesh.GUI;
 
 import bredesh.actors.GUIActors.GUIActor;
 import bredesh.actors.GUIActors.Parachutist;
-import bredesh.actors.GameConstants;
 import bredesh.actors.GameManager;
 import bredesh.actors.GeneratorImageActors;
 
@@ -66,8 +65,8 @@ public class GamePanel extends JPanel implements KeyListener, Runnable, MouseLis
     private void drawInfo(Graphics2D g2d) {
         g2d.setFont(new Font("Arial", Font.PLAIN, 20));
 
-        g2d.drawString(String.format("Your Heart: %d", gameManager.getHearts()), GameConstants.HEART_X, GameConstants.HEART_Y);
-        g2d.drawString(String.format("Your Score: %d", gameManager.getScore()), GameConstants.SCORE_X, GameConstants.SCORE_Y);
+        g2d.drawString(String.format("Your Heart: %d", gameManager.getHearts()), GUIConstants.HEART_X, GUIConstants.HEART_Y);
+        g2d.drawString(String.format("Your Score: %d", gameManager.getScore()), GUIConstants.SCORE_X, GUIConstants.SCORE_Y);
     }
 
     @Override
@@ -138,14 +137,14 @@ public class GamePanel extends JPanel implements KeyListener, Runnable, MouseLis
     @Override
     public void mouseEntered(MouseEvent e) {
         if (e.getSource().equals(lb_back)) {
-            lb_back.setIcon(GeneratorImageActors.generateImageIconActors(GameConstants.PAUSE_BOLD_BUTTON_IMAGE));
+            lb_back.setIcon(GeneratorImageActors.generateImageIconActors(GUIConstants.PAUSE_BOLD_BUTTON_IMAGE));
         }
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         if (e.getSource().equals(lb_back)) {
-            lb_back.setIcon(GeneratorImageActors.generateImageIconActors(GameConstants.PAUSE_BUTTON_IMAGE));
+            lb_back.setIcon(GeneratorImageActors.generateImageIconActors(GUIConstants.PAUSE_BUTTON_IMAGE));
         }
     }
 

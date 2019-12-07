@@ -1,6 +1,6 @@
 package bredesh.GUI;
 
-import bredesh.actors.GameConstants;
+import bredesh.actors.GUIActors.Background;
 import bredesh.actors.GameManager;
 import bredesh.actors.GeneratorImageActors;
 
@@ -22,19 +22,19 @@ public class SecondMenuPanel extends JPanel implements MouseListener{
     }
 
     private void addComp() {
-        int x = GameConstants.FRAME_WIGHT / 2 - 182 / 2;
+        int x = GUIConstants.FRAME_WIGHT / 2 - 182 / 2;
         int y = 200;
-        lbPlay = setLabel(new JLabel(), x, y, GameConstants.RESUME_BUTTON_IMAGE);
+        lbPlay = setLabel(new JLabel(), x, y, GUIConstants.RESUME_BUTTON_IMAGE);
         add(lbPlay);
         lbPlay.addMouseListener(this);
         y += 70;
 
-        lbNewGame = setLabel(new JLabel(), x, y, GameConstants.NEW_GAME_BUTTON_IMAGE);
+        lbNewGame = setLabel(new JLabel(), x, y, GUIConstants.NEW_GAME_BUTTON_IMAGE);
         add(lbNewGame);
         lbNewGame.addMouseListener(this);
         y += 70;
 
-        lbExit = setLabel(new JLabel(), x, y, GameConstants.EXIT_BUTTON_IMAGE);
+        lbExit = setLabel(new JLabel(), x, y, GUIConstants.EXIT_BUTTON_IMAGE);
         add(lbExit);
         lbExit.addMouseListener(this);
     }
@@ -51,8 +51,8 @@ public class SecondMenuPanel extends JPanel implements MouseListener{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        Image image = GeneratorImageActors.generateImageActors(GameConstants.BACKGROUND_MENU_IMAGE);
-        g2d.drawImage(image, - 24, 0, GameConstants.FRAME_WIGHT + 24, GameConstants.FRAME_HEIGHT, null);
+        Image image = GeneratorImageActors.generateImageActors(Background.BACKGROUND_MENU_IMAGE);
+        g2d.drawImage(image, - 24, 0, GUIConstants.FRAME_WIGHT + 24, GUIConstants.FRAME_HEIGHT, null);
     }
 
 
@@ -82,26 +82,26 @@ public class SecondMenuPanel extends JPanel implements MouseListener{
     @Override
     public void mouseEntered(MouseEvent e) {
         if(e.getSource().equals(lbPlay)){
-            lbPlay.setIcon(GeneratorImageActors.generateImageIconActors(GameConstants.RESUME_BOLD_BUTTON_IMAGE));
+            lbPlay.setIcon(GeneratorImageActors.generateImageIconActors(GUIConstants.RESUME_BOLD_BUTTON_IMAGE));
         }
         else if(e.getSource().equals(lbNewGame)){
-            lbNewGame.setIcon(GeneratorImageActors.generateImageIconActors(GameConstants.NEW_GAME_BOLD_BUTTON_IMAGE));
+            lbNewGame.setIcon(GeneratorImageActors.generateImageIconActors(GUIConstants.NEW_GAME_BOLD_BUTTON_IMAGE));
         }
         else if(e.getSource().equals(lbExit)){
-            lbExit.setIcon(GeneratorImageActors.generateImageIconActors(GameConstants.EXIT_BOLD_BUTTON_IMAGE));
+            lbExit.setIcon(GeneratorImageActors.generateImageIconActors(GUIConstants.EXIT_BOLD_BUTTON_IMAGE));
         }
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         if(e.getSource().equals(lbPlay)){
-            lbPlay.setIcon(GeneratorImageActors.generateImageIconActors(GameConstants.RESUME_BUTTON_IMAGE));
+            lbPlay.setIcon(GeneratorImageActors.generateImageIconActors(GUIConstants.RESUME_BUTTON_IMAGE));
         }
         else if(e.getSource().equals(lbNewGame)){
-            lbNewGame.setIcon(GeneratorImageActors.generateImageIconActors(GameConstants.NEW_GAME_BUTTON_IMAGE));
+            lbNewGame.setIcon(GeneratorImageActors.generateImageIconActors(GUIConstants.NEW_GAME_BUTTON_IMAGE));
         }
         else if(e.getSource().equals(lbExit)){
-            lbExit.setIcon(GeneratorImageActors.generateImageIconActors(GameConstants.EXIT_BUTTON_IMAGE));
+            lbExit.setIcon(GeneratorImageActors.generateImageIconActors(GUIConstants.EXIT_BUTTON_IMAGE));
         }
     }
 }

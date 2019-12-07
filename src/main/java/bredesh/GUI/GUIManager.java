@@ -5,7 +5,7 @@ import bredesh.actors.GameManager;
 import javax.swing.*;
 import java.awt.*;
 
-import static bredesh.actors.GameConstants.*;
+import static bredesh.GUI.GUIConstants.*;
 
 public class GUIManager extends JPanel{
     private GamePanel gamePanel;

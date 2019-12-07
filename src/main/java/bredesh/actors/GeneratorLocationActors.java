@@ -1,5 +1,10 @@
 package bredesh.actors;
 
+import bredesh.actors.GUIActors.Airplane;
+import bredesh.actors.GUIActors.Background;
+import bredesh.actors.GUIActors.Boat;
+import bredesh.actors.GUIActors.Sea;
+
 import java.awt.*;
 
 public class GeneratorLocationActors {
@@ -8,13 +13,13 @@ public class GeneratorLocationActors {
         int height = image.getHeight(null);
         switch (actor) {
             case Background:
-                return new LocationActor(GameConstants.BACKGROUND_X, GameConstants.BACKGROUND_Y, width, height);
+                return new LocationActor(Background.BACKGROUND_X, Background.BACKGROUND_Y, width, height);
             case Sea:
-                return new LocationActor(GameConstants.SEA_X, GameConstants.SEA_Y, width, height);
+                return new LocationActor(Sea.SEA_X, Sea.SEA_Y, width, height);
             case Boat:
-                return new LocationActor(GameConstants.BOAT_X, GameConstants.BOAT_Y, width, height);
+                return new LocationActor(Boat.BOAT_X, Boat.BOAT_Y, width, height);
             case Airplane:
-                return new LocationActor(GameConstants.AIRPLANE_X, GameConstants.AIRPLANE_Y, width, height);
+                return new LocationActor(Airplane.AIRPLANE_X, Airplane.AIRPLANE_Y, width, height);
             default:
                 return null;
         }

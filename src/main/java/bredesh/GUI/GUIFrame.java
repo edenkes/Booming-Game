@@ -1,14 +1,12 @@
 package bredesh.GUI;
 
-import bredesh.actors.GameConstants;
-
 import javax.swing.*;
 
 
 class GUIFrame extends JFrame {
 
     GUIFrame(GUIManager manager) {
-        setSize(GameConstants.FRAME_WIGHT, GameConstants.FRAME_HEIGHT);
+        setSize(GUIConstants.FRAME_WIGHT, GUIConstants.FRAME_HEIGHT);
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         add(manager);

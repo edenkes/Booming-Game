@@ -1,14 +1,18 @@
 package bredesh.actors.GUIActors;
 
-import bredesh.actors.GameConstants;
 import bredesh.actors.GameManager;
 import bredesh.actors.LocationActor;
 
 import java.awt.*;
 
 public class Boat extends GUIActor {
+    public static int BOAT_X = 50;
+    public static int BOAT_Y = 300;
+    public static String BOAT_IMAGE = "/Images/boat.png";
+    private static final int BOAT_SPEED = 3;
+
     Boat(LocationActor locationActor, Image image) {
-        super(locationActor, image, GameConstants.BOAT_SPEED);
+        super(locationActor, image, BOAT_SPEED);
     }
 
     @Override

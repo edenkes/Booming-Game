@@ -2,7 +2,7 @@ package bredesh.main;
 
 import bredesh.GUI.*;
 import bredesh.actors.GUIActors.*;
-import bredesh.actors.GameConstants;
+import bredesh.GUI.GUIConstants;
 import bredesh.actors.GameManager;
 import bredesh.actors.GeneratorImageActors;
 
@@ -22,7 +22,7 @@ public class Main {
 
         GamePanel panelGame = new GamePanel(mangerGUI, mangerGame);
         mangerGUI.setPanel(new MenuPanel(mangerGUI), new SecondMenuPanel(mangerGUI), panelGame);
-        panelGame.addLabel(new JLabel(), GeneratorImageActors.generateImageIconActors(GameConstants.PAUSE_BUTTON_IMAGE));
+        panelGame.addLabel(new JLabel(), GeneratorImageActors.generateImageIconActors(GUIConstants.PAUSE_BUTTON_IMAGE));
         panelGame.addKeyListener(panelGame);
         Thread thread = new Thread(panelGame);
         thread.start();

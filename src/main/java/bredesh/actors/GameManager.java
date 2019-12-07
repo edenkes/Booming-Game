@@ -10,6 +10,10 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GameManager {
+    static final int TIME_TO_DROP = 200;
+    static final int SCORE = 0;
+    static final int HEARTS = 3;
+
     private ArrayList<Parachutist> parachutists;
     private GameStatus gameStatus;
     private int timeToDrop;
@@ -57,9 +61,9 @@ public class GameManager {
 
     private void initFields() {
         gameStatus = GameStatus.RUNNING;
-        timeToDrop = GameConstants.TIME_TO_DROP_P;
-        score = GameConstants.SCORE;
-        hearts = GameConstants.HEARTS;
+        timeToDrop = TIME_TO_DROP;
+        score = SCORE;
+        hearts = HEARTS;
     }
 
     public void move(Actor actor, Direction direction) {

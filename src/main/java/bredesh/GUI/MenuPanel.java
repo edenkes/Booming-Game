@@ -1,6 +1,6 @@
 package bredesh.GUI;
 
-import bredesh.actors.GameConstants;
+import bredesh.actors.GUIActors.Background;
 import bredesh.actors.GameManager;
 import bredesh.actors.GeneratorImageActors;
 
@@ -21,15 +21,15 @@ public class MenuPanel extends JPanel implements MouseListener {
     }
 
     private void addComp() {
-        int x = GameConstants.FRAME_WIGHT / 2 - 182 / 2;
+        int x = GUIConstants.FRAME_WIGHT / 2 - 182 / 2;
         int y = 200;
 
-        lbPlay = setLabel(new JLabel(), x, y, GameConstants.PLAY_BUTTON_IMAGE);
+        lbPlay = setLabel(new JLabel(), x, y, GUIConstants.PLAY_BUTTON_IMAGE);
         add(lbPlay);
         lbPlay.addMouseListener(this);
         y += 70;
 
-        lbExit = setLabel(new JLabel(), x, y, GameConstants.EXIT_BUTTON_IMAGE);
+        lbExit = setLabel(new JLabel(), x, y, GUIConstants.EXIT_BUTTON_IMAGE);
         add(lbExit);
         lbExit.addMouseListener(this);
     }
@@ -46,8 +46,8 @@ public class MenuPanel extends JPanel implements MouseListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        Image image = GeneratorImageActors.generateImageActors(GameConstants.BACKGROUND_MENU_IMAGE);
-        g2d.drawImage(image, -24, 0, GameConstants.FRAME_WIGHT + 24,GameConstants.FRAME_HEIGHT, null);
+        Image image = GeneratorImageActors.generateImageActors(Background.BACKGROUND_MENU_IMAGE);
+        g2d.drawImage(image, -24, 0, GUIConstants.FRAME_WIGHT + 24, GUIConstants.FRAME_HEIGHT, null);
     }
 
 
@@ -77,9 +77,9 @@ public class MenuPanel extends JPanel implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
         if (e.getSource().equals(lbPlay)) {
-            lbPlay.setIcon(GeneratorImageActors.generateImageIconActors(GameConstants.PLAY_BUTTON_IMAGE));
+            lbPlay.setIcon(GeneratorImageActors.generateImageIconActors(GUIConstants.PLAY_BUTTON_IMAGE));
         } else if (e.getSource().equals(lbExit)) {
-            lbExit.setIcon(GeneratorImageActors.generateImageIconActors(GameConstants.EXIT_BUTTON_IMAGE));
+            lbExit.setIcon(GeneratorImageActors.generateImageIconActors(GUIConstants.EXIT_BUTTON_IMAGE));
         }
     }
 }

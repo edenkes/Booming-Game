@@ -1,6 +1,11 @@
 package bredesh.actors;
 
+import static bredesh.GUI.GUIConstants.FRAME_WIGHT;
+
 public class LocationActor {
+    private static final int OUT_OF_FRAME_RIGHT = FRAME_WIGHT -100;
+    private static final int OUT_OF_FRAME_LEFT = -200;
+
     private final int initial_x;
     private final int initial_y;
 
@@ -50,10 +55,10 @@ public class LocationActor {
     }
 
     public boolean isOutOfRightFrame() {
-        return GameConstants.OUT_OF_RIGHT_FRAME < x;
+        return OUT_OF_FRAME_RIGHT < x;
     }
     public boolean isOutOfLeftFrame() {
-        return x < GameConstants.OUT_OF_LEFT_FRAME;
+        return x < OUT_OF_FRAME_LEFT;
     }
 
     public void resetHorizontal(int x) {
