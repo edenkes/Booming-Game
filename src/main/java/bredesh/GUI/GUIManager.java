@@ -7,20 +7,19 @@ import java.awt.*;
 
 import static bredesh.GUI.GUIConstants.*;
 
-public class GUIManager extends JPanel{
+public class GUIManager extends JPanel {
     private GamePanel gamePanel;
     private MenuPanel menuPanel;
     private CardLayout cardLayout;
     private SecondMenuPanel secondMenuPanel;
 
-
-    public GUIManager(CardLayout cardLayout){
+    public GUIManager(CardLayout cardLayout) {
         this.cardLayout = cardLayout;
         setLayout(cardLayout);
         new GUIFrame(this);
     }
 
-    public void setPanel(MenuPanel menuPanel, SecondMenuPanel secondMenuPanel, GamePanel gamePanel){
+    public void setPanel(MenuPanel menuPanel, SecondMenuPanel secondMenuPanel, GamePanel gamePanel) {
         this.menuPanel = menuPanel;
         add(menuPanel, MENU_TAG);
         this.secondMenuPanel = secondMenuPanel;
@@ -29,22 +28,22 @@ public class GUIManager extends JPanel{
         add(gamePanel, PLAY_GAME_TAG);
     }
 
-    public void showMenu(){
+    public void showMenu() {
         cardLayout.show(this, MENU_TAG);
         menuPanel.requestFocus();
     }
 
-    void showSubMenu(){
+    void showSubMenu() {
         cardLayout.show(this, SUB_MENU_TAG);
         secondMenuPanel.requestFocus();
     }
 
-    void showPlayGame(){
+    void showPlayGame() {
         cardLayout.show(this, PLAY_GAME_TAG);
         gamePanel.requestFocus();
     }
 
-    void showNewGame(){
+    void showNewGame() {
         gamePanel.resetGame();
         cardLayout.show(this, PLAY_GAME_TAG);
         gamePanel.requestFocus();
@@ -57,5 +56,12 @@ public class GUIManager extends JPanel{
 
     GamePanel getGamePanel() {
         return gamePanel;
+    }
+
+    public void initGamePanel() {
+        gamePanel.addLabel(new JLabel());
+        gamePanel.addKeyListener(gamePanel);
+        Thread thread = new Thread(gamePanel);
+        thread.start();
     }
 }

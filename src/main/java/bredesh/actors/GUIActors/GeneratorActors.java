@@ -8,13 +8,6 @@ import bredesh.actors.LocationActor;
 import java.awt.*;
 
 public class GeneratorActors {
-
-    public static GUIActor generateActors(GameManager.Actor actor){
-        Image imageActors = GeneratorImageActors.generateImageActors(actor);
-        LocationActor locationActors = GeneratorLocationActors.generateLocationActors(actor, imageActors);
-        return generateActors(actor, locationActors, imageActors);
-    }
-
     public static GUIActor generateActors(GameManager.Actor actor, LocationActor locationActors, Image imageActors){
         switch (actor){
             case Background:
@@ -30,5 +23,11 @@ public class GeneratorActors {
             default:
                 return null;
         }
+    }
+
+    public static GUIActor generateActors(GameManager.Actor actor){
+        Image imageActors = GeneratorImageActors.generateImageActors(actor);
+        LocationActor locationActors = GeneratorLocationActors.generateLocationActors(actor, imageActors);
+        return generateActors(actor, locationActors, imageActors);
     }
 }

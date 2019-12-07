@@ -3,7 +3,7 @@ package bredesh.actors;
 import static bredesh.GUI.GUIConstants.FRAME_WIGHT;
 
 public class LocationActor {
-    private static final int OUT_OF_FRAME_RIGHT = FRAME_WIGHT -100;
+    private static final int OUT_OF_FRAME_RIGHT = FRAME_WIGHT - 100;
     private static final int OUT_OF_FRAME_LEFT = -200;
 
     private final int initial_x;
@@ -57,6 +57,7 @@ public class LocationActor {
     public boolean isOutOfRightFrame() {
         return OUT_OF_FRAME_RIGHT < x;
     }
+
     public boolean isOutOfLeftFrame() {
         return x < OUT_OF_FRAME_LEFT;
     }

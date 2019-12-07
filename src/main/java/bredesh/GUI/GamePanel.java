@@ -25,8 +25,9 @@ public class GamePanel extends JPanel implements KeyListener, Runnable, MouseLis
         this.gameManager = gameManager;
     }
 
-    public void addLabel(JLabel lb_back, ImageIcon imageIcon) {
-        this.lb_back = lb_back;
+    void addLabel(JLabel lb_back) {
+        ImageIcon imageIcon = GeneratorImageActors.generateImageIconActors(GUIConstants.PAUSE_BUTTON_IMAGE);
+        this.lb_back = lb_back ;
         lb_back.setIcon(imageIcon);
         lb_back.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight());
         lb_back.setLocation(690, 520);

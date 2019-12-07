@@ -1,12 +1,12 @@
 package bredesh.main;
 
-import bredesh.GUI.*;
+import bredesh.GUI.GUIManager;
+import bredesh.GUI.GamePanel;
+import bredesh.GUI.MenuPanel;
+import bredesh.GUI.SecondMenuPanel;
 import bredesh.actors.GUIActors.*;
-import bredesh.GUI.GUIConstants;
 import bredesh.actors.GameManager;
-import bredesh.actors.GeneratorImageActors;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class Main {
@@ -20,13 +20,8 @@ public class Main {
                 (Boat) GeneratorActors.generateActors(GameManager.Actor.Boat),
                 (Airplane) GeneratorActors.generateActors(GameManager.Actor.Airplane));
 
-        GamePanel panelGame = new GamePanel(mangerGUI, mangerGame);
-        mangerGUI.setPanel(new MenuPanel(mangerGUI), new SecondMenuPanel(mangerGUI), panelGame);
-        panelGame.addLabel(new JLabel(), GeneratorImageActors.generateImageIconActors(GUIConstants.PAUSE_BUTTON_IMAGE));
-        panelGame.addKeyListener(panelGame);
-        Thread thread = new Thread(panelGame);
-        thread.start();
-
+        mangerGUI.setPanel(new MenuPanel(mangerGUI), new SecondMenuPanel(mangerGUI), new GamePanel(mangerGUI, mangerGame));
+        mangerGUI.initGamePanel();
         mangerGUI.showMenu();
     }
 }

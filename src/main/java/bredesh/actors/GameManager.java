@@ -10,9 +10,9 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GameManager {
-    static final int TIME_TO_DROP = 200;
-    static final int SCORE = 0;
-    static final int HEARTS = 3;
+    private static final int TIME_TO_DROP = 200;
+    private static final int SCORE = 0;
+    private static final int HEARTS = 3;
 
     private ArrayList<Parachutist> parachutists;
     private GameStatus gameStatus;
@@ -46,29 +46,25 @@ public class GameManager {
         actors.put(Actor.Sea, sea);
         actors.put(Actor.Boat, boat);
         actors.put(Actor.Airplane, airplane);
-        this.parachutists = new ArrayList<>();
 
-        initFields();
+        resetGame();
     }
 
     public void resetGame() {
-        initFields();
+        gameStatus = GameStatus.RUNNING;
+        timeToDrop = TIME_TO_DROP;
+        score = SCORE;
+        hearts = HEARTS;
 
         actors.get(Actor.Boat).getLocationActor().resetToInitial();
         actors.get(Actor.Airplane).getLocationActor().resetToInitial();
         parachutists = new ArrayList<>();
     }
 
-    private void initFields() {
-        gameStatus = GameStatus.RUNNING;
-        timeToDrop = TIME_TO_DROP;
-        score = SCORE;
-        hearts = HEARTS;
-    }
-
     public void move(Actor actor, Direction direction) {
         actors.get(actor).move(direction);
     }
+
     public void move(Actor actor) {
         actors.get(actor).move();
     }
