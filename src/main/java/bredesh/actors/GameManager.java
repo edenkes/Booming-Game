@@ -13,6 +13,7 @@ public class GameManager {
     private static final int TIME_TO_DROP = 200;
     private static final int SCORE = 0;
     private static final int HEARTS = 3;
+    private static final int GAIN_POINTS = 10;
 
     private ArrayList<Parachutist> parachutists;
     private GameStatus gameStatus;
@@ -108,7 +109,7 @@ public class GameManager {
     }
 
     private void managedToCatch() {
-        score++;
+        score += GAIN_POINTS;
     }
 
     public void setGameStatus(GameStatus gameStatus) {
