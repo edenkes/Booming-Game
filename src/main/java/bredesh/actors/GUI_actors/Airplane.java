@@ -16,7 +16,7 @@ public class Airplane extends GUI_Actor {
 
         locationActor.moveLeft();
 
-        if (locationActor.isOutOfFrame()) {
+        if (locationActor.isOutOfLeftFrame()) {
             locationActor.resetHorizontal(1000);
         }
     }

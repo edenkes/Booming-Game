@@ -62,12 +62,11 @@ public class GameManager {
         hearts = GameConstants.HEARTS;
     }
 
-    public void moveBoat(Direction direction) {
-        actors.get(Actor.Boat).move(direction);
+    public void move(Actor actor, Direction direction) {
+        actors.get(actor).move(direction);
     }
-
-    public void moveAirplane() {
-        actors.get(Actor.Airplane).move();
+    public void move(Actor actor) {
+        actors.get(actor).move();
     }
 
     public void moveParachutists() {
@@ -78,7 +77,7 @@ public class GameManager {
 
     public void dropParachute() {
         if (timeToDrop-- == 0) {
-            timeToDrop = ThreadLocalRandom.current().nextInt(100, 10000);
+            timeToDrop = ThreadLocalRandom.current().nextInt(100, 7000);
             Image imageActors = GeneratorImageActors.generateImageActors(Actor.Parachutist);
             LocationActor locationActors = GeneratorLocationActors.generateLocationActors(actors.get(Actor.Airplane).getLocationActor(), imageActors);
             parachutists.add((Parachutist) GeneratorActors.generateActors(Actor.Parachutist, locationActors, imageActors));

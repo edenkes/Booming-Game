@@ -14,6 +14,7 @@ public class SecondMenuPanel extends JPanel implements MouseListener{
     private JLabel lbPlay;
     private JLabel lbNewGame;
     private JLabel lbExit;
+
     public SecondMenuPanel(GUIManager guiManager) {
         this.guiManager = guiManager;
         setLayout(null);

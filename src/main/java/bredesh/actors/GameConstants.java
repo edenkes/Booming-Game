@@ -4,6 +4,17 @@ public class GameConstants {
     public static final int FRAME_WIGHT = 882;
     public static final int FRAME_HEIGHT = 610;
 
+    static final int TIME_TO_DROP_P = 200;
+    static final int SCORE = 0;
+    static final int HEARTS = 3;
+
+    static final int OUT_OF_RIGHT_FRAME = 1000;
+    static final int OUT_OF_LEFT_FRAME = -200;
+
+    public static String MENU_TAG = "menu";
+    public static String SUB_MENU_TAG = "submenu";
+    public static String PLAY_GAME_TAG = "play_game";
+
     static int BACKGROUND_X = 0;
     static int BACKGROUND_Y = 0;
     static String BACKGROUND_IMAGE = "/Images/background.png";
@@ -31,10 +42,6 @@ public class GameConstants {
 
     public static final int SCORE_X = 50;
     public static final int SCORE_Y = 75;
-
-    static final int TIME_TO_DROP_P = 200;
-    static final int SCORE = 0;
-    static final int HEARTS = 3;
 
     // Buttons
     public static String PLAY_BUTTON_IMAGE = "/Images/button_play.png";

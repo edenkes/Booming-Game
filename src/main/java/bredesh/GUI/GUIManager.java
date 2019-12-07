@@ -5,15 +5,13 @@ import bredesh.actors.GameManager;
 import javax.swing.*;
 import java.awt.*;
 
+import static bredesh.actors.GameConstants.*;
+
 public class GUIManager extends JPanel{
     private GamePanel gamePanel;
     private MenuPanel menuPanel;
     private CardLayout cardLayout;
     private SecondMenuPanel secondMenuPanel;
-
-    private static String MENU_TAG = "menu";
-    private static String SUB_MENU_TAG = "submenu";
-    private static String PLAY_GAME_TAG = "play_game";
 
 
     public GUIManager(CardLayout cardLayout){

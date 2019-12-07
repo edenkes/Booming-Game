@@ -94,12 +94,13 @@ public class GamePanel extends JPanel implements KeyListener, Runnable, MouseLis
 
                 case RUNNING:
                     if (keyPressedEvent == KeyEvent.VK_LEFT) {
-                        gameManager.moveBoat(GameManager.Direction.LEFT);
+                        gameManager.move(GameManager.Actor.Boat, GameManager.Direction.LEFT);
                     } else if (keyPressedEvent == KeyEvent.VK_RIGHT) {
-                        gameManager.moveBoat(GameManager.Direction.RIGHT);
+                        gameManager.move(GameManager.Actor.Boat, GameManager.Direction.RIGHT);
                     }
 
-                    gameManager.moveAirplane();
+                    gameManager.move(GameManager.Actor.Airplane);
+
                     gameManager.checkParachutistLocation();
                     gameManager.dropParachute();
                     gameManager.moveParachutists();
@@ -113,7 +114,6 @@ public class GamePanel extends JPanel implements KeyListener, Runnable, MouseLis
                         e.printStackTrace();
                     }
                     break;
-
             }
         }
     }

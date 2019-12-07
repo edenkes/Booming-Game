@@ -49,8 +49,11 @@ public class LocationActor {
         y++;
     }
 
-    public boolean isOutOfFrame() {
-        return getX() < -200;
+    public boolean isOutOfRightFrame() {
+        return GameConstants.OUT_OF_RIGHT_FRAME < x;
+    }
+    public boolean isOutOfLeftFrame() {
+        return x < GameConstants.OUT_OF_LEFT_FRAME;
     }
 
     public void resetHorizontal(int x) {
