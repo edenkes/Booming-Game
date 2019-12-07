@@ -21,7 +21,7 @@ public class MenuPanel extends JPanel implements MouseListener {
     }
 
     private void addComp() {
-        int x = GUIConstants.FRAME_WIGHT / 2 - 182 / 2;
+        int x = GUIConstants.FRAME_WIGHT / 2 - 91;
         int y = 200;
 
         lbPlay = setLabel(new JLabel(), x, y, GUIConstants.PLAY_BUTTON_IMAGE);

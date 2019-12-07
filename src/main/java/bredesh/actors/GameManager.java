@@ -111,7 +111,6 @@ public class GameManager {
         score++;
     }
 
-
     public void setGameStatus(GameStatus gameStatus) {
         this.gameStatus = gameStatus;
     }

@@ -13,6 +13,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import static bredesh.GUI.GUIConstants.*;
+
 public class GamePanel extends JPanel implements KeyListener, Runnable, MouseListener {
     private GameManager gameManager;
     private JLabel lb_back;
@@ -30,7 +32,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable, MouseLis
         this.lb_back = lb_back ;
         lb_back.setIcon(imageIcon);
         lb_back.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight());
-        lb_back.setLocation(690, 520);
+        lb_back.setLocation(PAUSE_BUTTON_X, PAUSE_BUTTON_Y);
         lb_back.addMouseListener(this);
         add(lb_back);
     }

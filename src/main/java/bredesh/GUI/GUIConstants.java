@@ -14,6 +14,9 @@ public class GUIConstants {
     static final int SCORE_X = 50;
     static final int SCORE_Y = 75;
 
+    static final int PAUSE_BUTTON_X = 690;
+    static final int PAUSE_BUTTON_Y = 520;
+
     // Buttons
     static String PLAY_BUTTON_IMAGE = "/Images/button_play.png";
     static String RESUME_BUTTON_IMAGE = "/Images/button_resume.png";
