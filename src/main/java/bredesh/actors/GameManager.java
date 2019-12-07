@@ -1,7 +1,7 @@
 package bredesh.actors;
 
 
-import bredesh.actors.GUI_actors.*;
+import bredesh.actors.GUIActors.*;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class GameManager {
     private int timeToDrop;
     private int score;
     private int hearts;
-    private Map<Actor, GUI_Actor> actors;
+    private Map<Actor, GUIActor> actors;
 
     public enum Direction {
         RIGHT,
@@ -120,7 +120,7 @@ public class GameManager {
         return gameStatus;
     }
 
-    public GUI_Actor getActor(Actor actor) {
+    public GUIActor getActor(Actor actor) {
         return actors.get(actor);
     }
 

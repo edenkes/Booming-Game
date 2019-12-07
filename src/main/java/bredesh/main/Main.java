@@ -1,14 +1,13 @@
 package bredesh.main;
 
 import bredesh.GUI.*;
-import bredesh.actors.GUI_actors.*;
+import bredesh.actors.GUIActors.*;
 import bredesh.actors.GameConstants;
 import bredesh.actors.GameManager;
 import bredesh.actors.GeneratorImageActors;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {

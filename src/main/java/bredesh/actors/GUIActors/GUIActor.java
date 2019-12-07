@@ -1,4 +1,4 @@
-package bredesh.actors.GUI_actors;
+package bredesh.actors.GUIActors;
 
 
 import bredesh.actors.GameManager;
@@ -6,20 +6,20 @@ import bredesh.actors.LocationActor;
 
 import java.awt.*;
 
-public abstract class GUI_Actor {
+public abstract class GUIActor {
     private final int actorSpeed;
     private int countSpeed;
     LocationActor locationActor;
     private Image image;
 
-    GUI_Actor(LocationActor locationActor, Image image, int actorSpeed) {
+    GUIActor(LocationActor locationActor, Image image, int actorSpeed) {
         this.locationActor = locationActor;
         this.image = image;
         countSpeed = 0;
         this.actorSpeed = actorSpeed;
     }
 
-    GUI_Actor(LocationActor locationActor, Image image) {
+    GUIActor(LocationActor locationActor, Image image) {
         this.locationActor = locationActor;
         this.image = image;
         countSpeed = 0;

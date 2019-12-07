@@ -1,8 +1,8 @@
 package bredesh.GUI;
 
 
-import bredesh.actors.GUI_actors.GUI_Actor;
-import bredesh.actors.GUI_actors.Parachutist;
+import bredesh.actors.GUIActors.GUIActor;
+import bredesh.actors.GUIActors.Parachutist;
 import bredesh.actors.GameConstants;
 import bredesh.actors.GameManager;
 import bredesh.actors.GeneratorImageActors;
@@ -53,7 +53,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable, MouseLis
     }
 
     private void drawActor(Graphics2D g2d, GameManager.Actor actorType) {
-        GUI_Actor actor = gameManager.getActor(actorType);
+        GUIActor actor = gameManager.getActor(actorType);
         g2d.drawImage(actor.getImage(), actor.getLocationActor().getX(), actor.getLocationActor().getY(), null);
     }
 

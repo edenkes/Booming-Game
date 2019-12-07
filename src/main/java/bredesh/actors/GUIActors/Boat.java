@@ -1,4 +1,4 @@
-package bredesh.actors.GUI_actors;
+package bredesh.actors.GUIActors;
 
 import bredesh.actors.GameConstants;
 import bredesh.actors.GameManager;
@@ -6,7 +6,7 @@ import bredesh.actors.LocationActor;
 
 import java.awt.*;
 
-public class Boat extends GUI_Actor {
+public class Boat extends GUIActor {
     Boat(LocationActor locationActor, Image image) {
         super(locationActor, image, GameConstants.BOAT_SPEED);
     }

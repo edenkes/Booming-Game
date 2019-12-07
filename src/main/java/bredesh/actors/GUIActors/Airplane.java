@@ -1,11 +1,11 @@
-package bredesh.actors.GUI_actors;
+package bredesh.actors.GUIActors;
 
 import bredesh.actors.GameConstants;
 import bredesh.actors.LocationActor;
 
 import java.awt.*;
 
-public class Airplane extends GUI_Actor {
+public class Airplane extends GUIActor {
     Airplane(LocationActor locationActor, Image image) {
         super(locationActor, image, GameConstants.AIRPLANE_SPEED);
     }
