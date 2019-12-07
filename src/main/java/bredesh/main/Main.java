@@ -13,9 +13,8 @@ public class Main {
     public static void main(String[] args) {
 
         GUIManager mangerGUI = new GUIManager(new CardLayout());
-        new GUIFrame(mangerGUI);
-        GameManager mangerGame = new GameManager();
-        mangerGame.initGame(
+
+        GameManager mangerGame = new GameManager(
                 (Background) GeneratorActors.generateActors(GameManager.Actor.Background),
                 (Sea) GeneratorActors.generateActors(GameManager.Actor.Sea),
                 (Boat) GeneratorActors.generateActors(GameManager.Actor.Boat),

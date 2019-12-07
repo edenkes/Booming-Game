@@ -17,6 +17,7 @@ public class GUIManager extends JPanel{
     public GUIManager(CardLayout cardLayout){
         this.cardLayout = cardLayout;
         setLayout(cardLayout);
+        new GUIFrame(this);
     }
 
     public void setPanel(MenuPanel menuPanel, SecondMenuPanel secondMenuPanel, GamePanel gamePanel){
