@@ -15,7 +15,7 @@ public class GameManager {
     private static final int HEARTS = 3;
     private static final int GAIN_POINTS = 10;
 
-    private ArrayList<Parachutist> parachutists;
+    private ArrayList<GUIActor> parachutists;
     private GameStatus gameStatus;
     private int timeToDrop;
     private int score;
@@ -71,7 +71,7 @@ public class GameManager {
     }
 
     public void moveParachutists() {
-        for (Parachutist parachutist : parachutists) {
+        for (GUIActor parachutist : parachutists) {
             parachutist.move();
         }
     }
@@ -81,13 +81,13 @@ public class GameManager {
             timeToDrop = ThreadLocalRandom.current().nextInt(100, 7000);
             Image imageActors = GeneratorImageActors.generateImageActors(Actor.Parachutist);
             LocationActor locationActors = GeneratorLocationActors.generateLocationActors(actors.get(Actor.Airplane).getLocationActor(), imageActors);
-            parachutists.add((Parachutist) GeneratorActors.generateActors(Actor.Parachutist, locationActors, imageActors));
+            parachutists.add(GeneratorActors.generateActors(Actor.Parachutist, locationActors, imageActors));
         }
     }
 
     public void checkParachutistLocation() {
-        ArrayList<Parachutist> parachutistsToRemove = new ArrayList<>();
-        for (Parachutist parachutist : parachutists) {
+        ArrayList<GUIActor> parachutistsToRemove = new ArrayList<>();
+        for (GUIActor parachutist : parachutists) {
             if (parachutist.getLocationActor().isTouching(actors.get(Actor.Boat).getLocationActor())) {
                 parachutistsToRemove.add(parachutist);
                 managedToCatch();
@@ -97,7 +97,7 @@ public class GameManager {
             }
         }
 
-        for (Parachutist parachutist : parachutistsToRemove) {
+        for (GUIActor parachutist : parachutistsToRemove) {
             parachutists.remove(parachutist);
         }
     }
@@ -124,7 +124,7 @@ public class GameManager {
         return actors.get(actor);
     }
 
-    public ArrayList<Parachutist> getParachutists() {
+    public ArrayList<GUIActor> getParachutists() {
         return parachutists;
     }
 

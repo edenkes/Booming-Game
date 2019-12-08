@@ -60,7 +60,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable, MouseLis
     }
 
     private void drawParachutists(Graphics2D g2d) {
-        for (Parachutist parachutist : gameManager.getParachutists()) {
+        for (GUIActor parachutist : gameManager.getParachutists()) {
             g2d.drawImage(parachutist.getImage(), parachutist.getLocationActor().getX(), parachutist.getLocationActor().getY(), null);
         }
     }
