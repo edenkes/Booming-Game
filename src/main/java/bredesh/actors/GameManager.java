@@ -41,7 +41,7 @@ public class GameManager {
         GAME_OVER,
     }
 
-    public GameManager(Background background, Sea sea, Boat boat, Airplane airplane) {
+    public GameManager(GUIActor background, GUIActor sea, GUIActor boat, GUIActor airplane) {
         actors = new HashMap<>();
         actors.put(Actor.Background, background);
         actors.put(Actor.Sea, sea);
