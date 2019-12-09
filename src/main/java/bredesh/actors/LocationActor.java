@@ -4,7 +4,7 @@ import static bredesh.GUI.GUIConstants.FRAME_WIGHT;
 
 public class LocationActor {
     private static final int OUT_OF_FRAME_RIGHT = FRAME_WIGHT - 100;
-    private static final int OUT_OF_FRAME_LEFT = -200;
+    private static final int OUT_OF_FRAME_LEFT = -190;
 
     private final int initial_x;
     private final int initial_y;
@@ -66,7 +66,7 @@ public class LocationActor {
         this.x = x;
     }
 
-    void resetToInitial() {
+    public void resetToInitial() {
         this.x = initial_x;
         this.y = initial_y;
     }
