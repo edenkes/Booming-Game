@@ -2,7 +2,6 @@ package bredesh.GUI;
 
 
 import bredesh.actors.GUIActors.GUIActor;
-import bredesh.actors.GUIActors.Parachutist;
 import bredesh.actors.GameManager;
 import bredesh.actors.GeneratorImageActors;
 
@@ -13,7 +12,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import static bredesh.GUI.GUIConstants.*;
+import static bredesh.GUI.GUIConstants.PAUSE_BUTTON_X;
+import static bredesh.GUI.GUIConstants.PAUSE_BUTTON_Y;
 
 public class GamePanel extends JPanel implements KeyListener, Runnable, MouseListener {
     private GameManager gameManager;
