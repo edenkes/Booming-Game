@@ -13,9 +13,6 @@ public class Parachutist extends GUIActor {
     }
 
     public void move() {
-        if (delayMove())
-            return;
-
         locationActor.moveDown();
     }
 }

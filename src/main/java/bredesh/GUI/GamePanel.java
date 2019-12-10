@@ -104,6 +104,9 @@ public class GamePanel extends JPanel implements KeyListener, Runnable, MouseLis
                     gameManager.move(GameManager.Actor.Airplane);
                     gameManager.move(GameManager.Actor.Sea);
 
+                    gameManager.resetIfOutOfFrame(GameManager.Actor.Airplane);
+                    gameManager.resetIfOutOfFrame(GameManager.Actor.Sea);
+
                     gameManager.checkParachutistLocation();
                     gameManager.dropParachute();
                     gameManager.moveParachutists();
@@ -116,7 +119,6 @@ public class GamePanel extends JPanel implements KeyListener, Runnable, MouseLis
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    break;
             }
         }
     }

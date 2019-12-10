@@ -9,7 +9,7 @@ public class Boat extends GUIActor {
     public static int BOAT_X = 50;
     public static int BOAT_Y = 300;
     public static String BOAT_IMAGE = "/Images/boat.png";
-    private static final int BOAT_SPEED = 3;
+    private static final int BOAT_SPEED = 2;
 
     Boat(LocationActor locationActor, Image image) {
         super(locationActor, image, BOAT_SPEED);
@@ -17,19 +17,10 @@ public class Boat extends GUIActor {
 
     @Override
     public void move(GameManager.Direction direction) {
-        if (delayMove()) {
-            return;
-        }
-
         if (direction == GameManager.Direction.LEFT) {
-            if (!locationActor.isOutOfLeftFrame()) {
-                locationActor.moveLeft();
-            }
+            locationActor.moveLeft();
         } else {
-            if (!locationActor.isOutOfRightFrame()) {
-
-                locationActor.moveRight();
-            }
+            locationActor.moveRight();
         }
     }
 }

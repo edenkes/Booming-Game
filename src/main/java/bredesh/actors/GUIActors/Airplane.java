@@ -15,13 +15,16 @@ public class Airplane extends GUIActor {
     }
 
     public void move() {
-        if (delayMove())
-            return;
-
         locationActor.moveLeft();
+    }
 
-        if (locationActor.isOutOfLeftFrame()) {
-            locationActor.resetHorizontal(1000);
-        }
+    @Override
+    public boolean isOutOfFrame() {
+        return locationActor.isOutOfLeftFrame();
+    }
+
+    @Override
+    public void resetLocation() {
+        locationActor.resetHorizontal(1000);
     }
 }

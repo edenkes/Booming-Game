@@ -15,15 +15,15 @@ public abstract class GUIActor {
     GUIActor(LocationActor locationActor, Image image, int actorSpeed) {
         this.locationActor = locationActor;
         this.image = image;
-        countSpeed = 0;
         this.actorSpeed = actorSpeed;
+        countSpeed = 0;
     }
 
     GUIActor(LocationActor locationActor, Image image) {
         this.locationActor = locationActor;
         this.image = image;
-        countSpeed = 0;
         this.actorSpeed = 1;
+        countSpeed = 0;
     }
 
     public Image getImage() {
@@ -34,17 +34,30 @@ public abstract class GUIActor {
         return locationActor;
     }
 
-    boolean delayMove() {
+    public boolean canMove() {
         if (++countSpeed % actorSpeed == 0) {
             countSpeed = 0;
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     public void move(GameManager.Direction direction) {
     }
 
     public void move() {
+    }
+
+    public boolean canMove(GameManager.Direction direction){
+        return ((direction == GameManager.Direction.LEFT && !locationActor.isOutOfLeftFrame()) ||
+                (direction == GameManager.Direction.RIGHT && !locationActor.isOutOfRightFrame())) && canMove();
+    }
+
+    public boolean isOutOfFrame() {
+        return false;
+    }
+
+    public void resetLocation() {
+        locationActor.resetToInitial();
     }
 }

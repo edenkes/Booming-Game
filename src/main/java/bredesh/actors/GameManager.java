@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GameManager {
-    private static final int TIME_TO_DROP = 200;
+    private static final int TIME_TO_DROP_FIRST = 600;
     private static final int SCORE = 0;
     private static final int HEARTS = 3;
     private static final int GAIN_POINTS = 10;
@@ -53,26 +53,42 @@ public class GameManager {
 
     public void resetGame() {
         gameStatus = GameStatus.RUNNING;
-        timeToDrop = TIME_TO_DROP;
+        timeToDrop = TIME_TO_DROP_FIRST;
         score = SCORE;
         hearts = HEARTS;
 
-        actors.get(Actor.Boat).getLocationActor().resetToInitial();
+        actors.get(Actor.Boat).resetLocation();
         actors.get(Actor.Airplane).getLocationActor().resetToInitial();
+        actors.get(Actor.Sea).resetLocation();
         parachutists = new ArrayList<>();
     }
 
     public void move(Actor actor, Direction direction) {
-        actors.get(actor).move(direction);
+        GUIActor guiActor = actors.get(actor);
+        if (guiActor.canMove(direction)) {
+            guiActor.move(direction);
+        }
     }
 
     public void move(Actor actor) {
-        actors.get(actor).move();
+        GUIActor guiActor = actors.get(actor);
+        if (guiActor.canMove()) {
+            guiActor.move();
+        }
+    }
+
+    public void resetIfOutOfFrame(Actor actor) {
+        GUIActor guiActor = actors.get(actor);
+        if (guiActor.isOutOfFrame()) {
+            guiActor.resetLocation();
+        }
     }
 
     public void moveParachutists() {
         for (GUIActor parachutist : parachutists) {
-            parachutist.move();
+            if (parachutist.canMove()) {
+                parachutist.move();
+            }
         }
     }
 
