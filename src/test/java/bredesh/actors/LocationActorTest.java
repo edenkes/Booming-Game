@@ -15,8 +15,8 @@ public class LocationActorTest {
 
     @Before
     public void setUp() {
-        locationActor = new LocationActor(0, 2, 10, 5);
-        locationActor2 = new LocationActor(1, 0, 5, 7);
+        locationActor = new LocationActor(0, 2, 100, 105);
+        locationActor2 = new LocationActor(1, 0, 35, 87);
         locationActor3 = new LocationActor(5, 5, 5, 1);
         locationActor4 = new LocationActor(11, 1, 15, 1);
     }
