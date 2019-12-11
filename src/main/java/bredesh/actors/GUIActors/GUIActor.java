@@ -34,7 +34,7 @@ public abstract class GUIActor {
         return locationActor;
     }
 
-    public boolean canMove() {
+    public boolean canMoveBySpeed() {
         if (++countSpeed % actorSpeed == 0) {
             countSpeed = 0;
             return true;
@@ -48,9 +48,9 @@ public abstract class GUIActor {
     public void move() {
     }
 
-    public boolean canMove(GameManager.Direction direction){
+    public boolean canMoveByDirection(GameManager.Direction direction){
         return ((direction == GameManager.Direction.LEFT && !locationActor.isOutOfLeftFrame()) ||
-                (direction == GameManager.Direction.RIGHT && !locationActor.isOutOfRightFrame())) && canMove();
+                (direction == GameManager.Direction.RIGHT && !locationActor.isOutOfRightFrame()));
     }
 
     public boolean isOutOfFrame() {

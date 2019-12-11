@@ -10,9 +10,9 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GameManager {
-    private static final int TIME_TO_DROP_FIRST = 600;
-    private static final int SCORE = 0;
-    private static final int HEARTS = 3;
+    static final int TIME_TO_DROP_FIRST = 600;
+    static final int SCORE = 0;
+    static final int HEARTS = 3;
     private static final int GAIN_POINTS = 10;
 
     private ArrayList<GUIActor> parachutists;
@@ -48,7 +48,7 @@ public class GameManager {
         actors.put(Actor.Boat, boat);
         actors.put(Actor.Airplane, airplane);
 
-        resetGame();
+        gameStatus = GameStatus.PAUSE;
     }
 
     public void resetGame() {
@@ -65,14 +65,14 @@ public class GameManager {
 
     public void move(Actor actor, Direction direction) {
         GUIActor guiActor = actors.get(actor);
-        if (guiActor.canMove(direction)) {
+        if (guiActor.canMoveByDirection(direction) && guiActor.canMoveBySpeed()) {
             guiActor.move(direction);
         }
     }
 
     public void move(Actor actor) {
         GUIActor guiActor = actors.get(actor);
-        if (guiActor.canMove()) {
+        if (guiActor.canMoveBySpeed()) {
             guiActor.move();
         }
     }
@@ -86,7 +86,7 @@ public class GameManager {
 
     public void moveParachutists() {
         for (GUIActor parachutist : parachutists) {
-            if (parachutist.canMove()) {
+            if (parachutist.canMoveBySpeed()) {
                 parachutist.move();
             }
         }
@@ -104,10 +104,10 @@ public class GameManager {
     public void checkParachutistLocation() {
         ArrayList<GUIActor> parachutistsToRemove = new ArrayList<>();
         for (GUIActor parachutist : parachutists) {
-            if (parachutist.getLocationActor().isTouching(actors.get(Actor.Boat).getLocationActor())) {
+            if (actors.get(Actor.Boat).getLocationActor().isTouching(parachutist.getLocationActor())) {
                 parachutistsToRemove.add(parachutist);
                 managedToCatch();
-            } else if (parachutist.getLocationActor().isTouching(actors.get(Actor.Sea).getLocationActor())) {
+            } else if (actors.get(Actor.Sea).getLocationActor().isTouching(parachutist.getLocationActor())) {
                 parachutistsToRemove.add(parachutist);
                 failedToCatch();
             }

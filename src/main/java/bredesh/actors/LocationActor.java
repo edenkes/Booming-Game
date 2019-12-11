@@ -3,8 +3,10 @@ package bredesh.actors;
 import static bredesh.GUI.GUIConstants.FRAME_WIGHT;
 
 public class LocationActor {
-    private static final int OUT_OF_FRAME_RIGHT = FRAME_WIGHT - 100;
-    private static final int OUT_OF_FRAME_LEFT = -190;
+    public static final int OUT_OF_FRAME_RIGHT = FRAME_WIGHT - 100;
+    public static final int OUT_OF_FRAME_LEFT = -190;
+    public static final int PADDING_HORIZONTAL = 5;
+    public static final int PADDING_VERTICAL = 10;
 
     private final int initial_x;
     private final int initial_y;
@@ -38,8 +40,18 @@ public class LocationActor {
     }
 
     boolean isTouching(LocationActor other) {
-        return (other.getX() < x && x < other.getX() + other.getWidth())
-                && (other.getY() > y && y > other.getY() - 20);
+        return isHorizontalTouching(other)
+                && isVerticalTouching(other);
+    }
+
+    private boolean isHorizontalTouching(LocationActor other) {
+        return ((x - PADDING_HORIZONTAL < other.x && other.x < x + width - PADDING_HORIZONTAL)
+                || (x - PADDING_HORIZONTAL < other.x + other.width && other.x + other.width < x + width - PADDING_HORIZONTAL));
+    }
+
+    private boolean isVerticalTouching(LocationActor other) {
+        return ((y - PADDING_VERTICAL < other.y && other.y < y)
+                || (y - PADDING_VERTICAL < other.y - other.height && other.y - other.height < y));
     }
 
     public void moveRight() {
