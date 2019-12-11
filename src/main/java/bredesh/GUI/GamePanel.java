@@ -95,22 +95,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable, MouseLis
                     continue;
 
                 case RUNNING:
-                    if (keyPressedEvent == KeyEvent.VK_LEFT) {
-                        gameManager.move(GameManager.Actor.Boat, GameManager.Direction.LEFT);
-                    } else if (keyPressedEvent == KeyEvent.VK_RIGHT) {
-                        gameManager.move(GameManager.Actor.Boat, GameManager.Direction.RIGHT);
-                    }
-
-                    gameManager.move(GameManager.Actor.Airplane);
-                    gameManager.move(GameManager.Actor.Sea);
-
-                    gameManager.resetIfOutOfFrame(GameManager.Actor.Airplane);
-                    gameManager.resetIfOutOfFrame(GameManager.Actor.Sea);
-
-                    gameManager.checkParachutistLocation();
-                    gameManager.dropParachute();
-                    gameManager.moveParachutists();
-
+                    gameManager.playRound(keyPressedEvent);
                     repaint();
 
                 case PAUSE:

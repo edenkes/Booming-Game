@@ -4,6 +4,7 @@ package bredesh.actors;
 import bredesh.actors.GUIActors.*;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -63,22 +64,37 @@ public class GameManager {
         parachutists = new ArrayList<>();
     }
 
-    public void move(Actor actor, Direction direction) {
-        GUIActor guiActor = actors.get(actor);
+    public void playRound(int keyPressedEvent) {
+        if (keyPressedEvent == KeyEvent.VK_LEFT) {
+            move(actors.get(GameManager.Actor.Boat), GameManager.Direction.LEFT);
+        } else if (keyPressedEvent == KeyEvent.VK_RIGHT) {
+            move(actors.get(GameManager.Actor.Boat), GameManager.Direction.RIGHT);
+        }
+
+        move(actors.get(GameManager.Actor.Airplane));
+        move(actors.get(GameManager.Actor.Sea));
+
+        resetIfOutOfFrame(actors.get(GameManager.Actor.Airplane));
+        resetIfOutOfFrame(actors.get(Actor.Sea));
+
+        checkParachutistLocation();
+        dropParachute();
+        moveParachutists();
+    }
+
+    public void move(GUIActor guiActor, Direction direction) {
         if (guiActor.canMoveByDirection(direction) && guiActor.canMoveBySpeed()) {
             guiActor.move(direction);
         }
     }
 
-    public void move(Actor actor) {
-        GUIActor guiActor = actors.get(actor);
+    public void move(GUIActor guiActor) {
         if (guiActor.canMoveBySpeed()) {
             guiActor.move();
         }
     }
 
-    public void resetIfOutOfFrame(Actor actor) {
-        GUIActor guiActor = actors.get(actor);
+    public void resetIfOutOfFrame(GUIActor guiActor) {
         if (guiActor.isOutOfFrame()) {
             guiActor.resetLocation();
         }
