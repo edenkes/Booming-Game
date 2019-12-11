@@ -42,13 +42,19 @@ public abstract class GUIActor {
         return false;
     }
 
-    public void move(GameManager.Direction direction) {
+    public void moveRight() {
+        locationActor.moveRight();
     }
 
-    public void move() {
+    public void moveLeft() {
+        locationActor.moveLeft();
     }
 
-    public boolean canMoveByDirection(GameManager.Direction direction){
+    public void moveDown() {
+        locationActor.moveDown();
+    }
+
+    public boolean canMoveByDirection(GameManager.Direction direction) {
         return ((direction == GameManager.Direction.LEFT && !locationActor.isOutOfLeftFrame()) ||
                 (direction == GameManager.Direction.RIGHT && !locationActor.isOutOfRightFrame()));
     }

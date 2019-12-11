@@ -71,8 +71,8 @@ public class GameManager {
             move(actors.get(GameManager.Actor.Boat), GameManager.Direction.RIGHT);
         }
 
-        move(actors.get(GameManager.Actor.Airplane));
-        move(actors.get(GameManager.Actor.Sea));
+        moveLeft(actors.get(GameManager.Actor.Airplane));
+        moveLeft(actors.get(GameManager.Actor.Sea));
 
         resetIfOutOfFrame(actors.get(GameManager.Actor.Airplane));
         resetIfOutOfFrame(actors.get(Actor.Sea));
@@ -84,13 +84,17 @@ public class GameManager {
 
     public void move(GUIActor guiActor, Direction direction) {
         if (guiActor.canMoveByDirection(direction) && guiActor.canMoveBySpeed()) {
-            guiActor.move(direction);
+            if (direction == GameManager.Direction.LEFT) {
+                guiActor.moveLeft();
+            } else if (direction == Direction.RIGHT) {
+                guiActor.moveRight();
+            }
         }
     }
 
-    public void move(GUIActor guiActor) {
+    public void moveLeft(GUIActor guiActor) {
         if (guiActor.canMoveBySpeed()) {
-            guiActor.move();
+            guiActor.moveLeft();
         }
     }
 
@@ -103,7 +107,7 @@ public class GameManager {
     public void moveParachutists() {
         for (GUIActor parachutist : parachutists) {
             if (parachutist.canMoveBySpeed()) {
-                parachutist.move();
+                parachutist.moveDown();
             }
         }
     }

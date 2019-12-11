@@ -11,8 +11,4 @@ public class Parachutist extends GUIActor {
     Parachutist(LocationActor locationActor, Image image) {
         super(locationActor, image, PARACHUTIST_SPEED);
     }
-
-    public void move() {
-        locationActor.moveDown();
-    }
 }

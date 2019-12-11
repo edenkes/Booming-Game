@@ -14,13 +14,4 @@ public class Boat extends GUIActor {
     Boat(LocationActor locationActor, Image image) {
         super(locationActor, image, BOAT_SPEED);
     }
-
-    @Override
-    public void move(GameManager.Direction direction) {
-        if (direction == GameManager.Direction.LEFT) {
-            locationActor.moveLeft();
-        } else {
-            locationActor.moveRight();
-        }
-    }
 }

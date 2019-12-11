@@ -19,8 +19,6 @@ public class GameManagerTest {
                 GeneratorActors.generateActors(GameManager.Actor.Sea),
                 GeneratorActors.generateActors(GameManager.Actor.Boat),
                 GeneratorActors.generateActors(GameManager.Actor.Airplane));
-
-
     }
 
     @Test
@@ -38,31 +36,6 @@ public class GameManagerTest {
 
         assertEquals(Sea.SEA_X, mangerGame.getActor(Actor.Sea).getLocationActor().getX());
         assertEquals(Sea.SEA_Y, mangerGame.getActor(Actor.Sea).getLocationActor().getY());
-    }
-
-    @Test
-    public void moveBoat() {
-        mangerGame.move(Actor.Boat, Direction.LEFT);
-        assertEquals(Boat.BOAT_X, mangerGame.getActor(Actor.Boat).getLocationActor().getX());
-
-        mangerGame.move(Actor.Boat, Direction.LEFT);
-        assertEquals(Boat.BOAT_X - 1, mangerGame.getActor(Actor.Boat).getLocationActor().getX());
-
-        mangerGame.move(Actor.Boat, Direction.LEFT);
-        assertEquals(Boat.BOAT_X - 1, mangerGame.getActor(Actor.Boat).getLocationActor().getX());
-    }
-
-    @Test
-    public void moveAirplane() {
-        for (int i = 0; i < Airplane.AIRPLANE_SPEED - 1; i++) {
-            mangerGame.move(Actor.Airplane);
-            assertEquals(Airplane.AIRPLANE_X, mangerGame.getActor(Actor.Airplane).getLocationActor().getX());
-        }
-        mangerGame.move(Actor.Airplane);
-        assertEquals(Airplane.AIRPLANE_X - 1, mangerGame.getActor(Actor.Airplane).getLocationActor().getX());
-
-        mangerGame.move(Actor.Airplane);
-        assertEquals(Airplane.AIRPLANE_X - 1, mangerGame.getActor(Actor.Airplane).getLocationActor().getX());
     }
 
     @Test

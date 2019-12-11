@@ -15,10 +15,10 @@ public class BoatTest {
         assert boat != null;
         assertEquals(BOAT_X, boat.locationActor.getX());
         assertEquals(BOAT_Y, boat.locationActor.getY());
-        boat.move(GameManager.Direction.LEFT);
+        boat.moveLeft();
         assertEquals(BOAT_X - 1, boat.locationActor.getX());
         assertEquals(BOAT_Y, boat.locationActor.getY());
-        boat.move(GameManager.Direction.LEFT);
+        boat.moveLeft();
         assertEquals(BOAT_X - 2, boat.locationActor.getX());
         assertEquals(BOAT_Y, boat.locationActor.getY());
     }
@@ -29,10 +29,10 @@ public class BoatTest {
         assert boat != null;
         assertEquals(BOAT_X, boat.locationActor.getX());
         assertEquals(BOAT_Y, boat.locationActor.getY());
-        boat.move(GameManager.Direction.RIGHT);
+        boat.moveRight();
         assertEquals(BOAT_X + 1, boat.locationActor.getX());
         assertEquals(BOAT_Y, boat.locationActor.getY());
-        boat.move(GameManager.Direction.RIGHT);
+        boat.moveRight();
         assertEquals(BOAT_X + 2, boat.locationActor.getX());
         assertEquals(BOAT_Y, boat.locationActor.getY());
         boat.resetLocation();
@@ -46,10 +46,10 @@ public class BoatTest {
         assert boat != null;
         assertEquals(BOAT_X, boat.locationActor.getX());
         assertEquals(BOAT_Y, boat.locationActor.getY());
-        boat.move(GameManager.Direction.RIGHT);
+        boat.moveRight();
         assertEquals(BOAT_X + 1, boat.locationActor.getX());
         assertEquals(BOAT_Y, boat.locationActor.getY());
-        boat.move(GameManager.Direction.LEFT);
+        boat.moveLeft();
         assertEquals(BOAT_X, boat.locationActor.getX());
         assertEquals(BOAT_Y, boat.locationActor.getY());
     }
@@ -68,7 +68,7 @@ public class BoatTest {
         assert boat != null;
         assertTrue(boat.canMoveByDirection(GameManager.Direction.RIGHT));
         assertTrue(boat.canMoveByDirection(GameManager.Direction.LEFT));
-        boat.move(GameManager.Direction.LEFT);
+        boat.moveLeft();
         assertTrue(boat.canMoveByDirection(GameManager.Direction.RIGHT));
         assertFalse(boat.canMoveByDirection(GameManager.Direction.LEFT));
     }
@@ -79,7 +79,7 @@ public class BoatTest {
         assert boat != null;
         assertTrue(boat.canMoveByDirection(GameManager.Direction.RIGHT));
         assertTrue(boat.canMoveByDirection(GameManager.Direction.LEFT));
-        boat.move(GameManager.Direction.RIGHT);
+        boat.moveRight();
         assertFalse(boat.canMoveByDirection(GameManager.Direction.RIGHT));
         assertTrue(boat.canMoveByDirection(GameManager.Direction.LEFT));
     }

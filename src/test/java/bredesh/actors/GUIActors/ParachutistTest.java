@@ -16,10 +16,10 @@ public class ParachutistTest {
         assert parachutist != null;
         assertEquals(AIRPLANE_X, parachutist.locationActor.getX());
         assertEquals(AIRPLANE_Y, parachutist.locationActor.getY());
-        parachutist.move();
+        parachutist.moveDown();
         assertEquals(AIRPLANE_X, parachutist.locationActor.getX());
         assertEquals(AIRPLANE_Y+1, parachutist.locationActor.getY());
-        parachutist.move();
+        parachutist.moveDown();
         assertEquals(AIRPLANE_X, parachutist.locationActor.getX());
         assertEquals(AIRPLANE_Y+2, parachutist.locationActor.getY());
     }

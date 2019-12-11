@@ -14,10 +14,6 @@ public class Sea extends GUIActor {
         super(locationActor, image, SEA_SPEED);
     }
 
-    public void move() {
-        locationActor.moveLeft();
-    }
-
     @Override
     public boolean isOutOfFrame() {
         return locationActor.isOutOfLeftFrame();

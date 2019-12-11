@@ -15,10 +15,10 @@ public class SeaTest {
         assert sea != null;
         assertEquals(SEA_X, sea.locationActor.getX());
         assertEquals(SEA_Y, sea.locationActor.getY());
-        sea.move();
+        sea.moveLeft();
         assertEquals(SEA_X-1, sea.locationActor.getX());
         assertEquals(SEA_Y, sea.locationActor.getY());
-        sea.move();
+        sea.moveLeft();
         assertEquals(SEA_X-2, sea.locationActor.getX());
         assertEquals(SEA_Y, sea.locationActor.getY());
     }
@@ -27,7 +27,7 @@ public class SeaTest {
     public void isOutOfFrame() {
         GUIActor sea = GeneratorActors.generateActors(GameManager.Actor.Sea, new LocationActor(LocationActor.OUT_OF_FRAME_LEFT, 0, 0, 0), null);
         assert sea != null;
-        sea.move();
+        sea.moveLeft();
         assertTrue(sea.isOutOfFrame());
         sea.resetLocation();
         assertFalse(sea.isOutOfFrame());

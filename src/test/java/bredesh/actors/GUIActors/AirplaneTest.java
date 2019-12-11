@@ -15,10 +15,10 @@ public class AirplaneTest {
         assert airplane != null;
         assertEquals(AIRPLANE_X, airplane.locationActor.getX());
         assertEquals(AIRPLANE_Y, airplane.locationActor.getY());
-        airplane.move();
+        airplane.moveLeft();
         assertEquals(AIRPLANE_X-1, airplane.locationActor.getX());
         assertEquals(AIRPLANE_Y, airplane.locationActor.getY());
-        airplane.move();
+        airplane.moveLeft();
         assertEquals(AIRPLANE_X-2, airplane.locationActor.getX());
         assertEquals(AIRPLANE_Y, airplane.locationActor.getY());
     }
@@ -27,7 +27,7 @@ public class AirplaneTest {
     public void isOutOfFrame() {
         GUIActor airplane = GeneratorActors.generateActors(GameManager.Actor.Airplane, new LocationActor(LocationActor.OUT_OF_FRAME_LEFT, 0, 0, 0), null);
         assert airplane != null;
-        airplane.move();
+        airplane.moveLeft();
         assertTrue(airplane.isOutOfFrame());
         airplane.resetLocation();
         assertFalse(airplane.isOutOfFrame());
