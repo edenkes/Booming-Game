@@ -20,6 +20,7 @@ public class GameManagerTest {
                 GeneratorActors.generateActors(GameManager.Actor.Boat),
                 GeneratorActors.generateActors(GameManager.Actor.Airplane));
 
+
     }
 
     @Test
@@ -66,6 +67,8 @@ public class GameManagerTest {
 
     @Test
     public void moveParachutists() {
+        mangerGame.resetGame();
+
         for (int i = 0; i < TIME_TO_DROP_FIRST + 1; i++) {
             mangerGame.dropParachute();
         }
