@@ -5,8 +5,8 @@ import static bredesh.GUI.GUIConstants.FRAME_WIGHT;
 public class LocationActor {
     public static final int OUT_OF_FRAME_RIGHT = FRAME_WIGHT - 100;
     public static final int OUT_OF_FRAME_LEFT = -190;
-    public static final int PADDING_HORIZONTAL = 5;
-    public static final int PADDING_VERTICAL = 10;
+    public static final int PADDING_VERTICAL = 30;
+    public static final int PADDING_HORIZONTAL = 75;
 
     private final int initial_x;
     private final int initial_y;
@@ -44,14 +44,14 @@ public class LocationActor {
                 && isVerticalTouching(other);
     }
 
-    private boolean isHorizontalTouching(LocationActor other) {
-        return ((x - PADDING_HORIZONTAL < other.x && other.x < x + width - PADDING_HORIZONTAL)
-                || (x - PADDING_HORIZONTAL < other.x + other.width && other.x + other.width < x + width - PADDING_HORIZONTAL));
+    public boolean isHorizontalTouching(LocationActor other) {
+        return ((y < other.y && other.y < y +height)
+                || (y + height - PADDING_HORIZONTAL < other.y + other.height && other.y + other.height < y + height));
     }
 
-    private boolean isVerticalTouching(LocationActor other) {
-        return ((y - PADDING_VERTICAL < other.y && other.y < y)
-                || (y - PADDING_VERTICAL < other.y - other.height && other.y - other.height < y));
+    public boolean isVerticalTouching(LocationActor other) {
+        return ((x + PADDING_VERTICAL < other.x && other.x < x + width - PADDING_VERTICAL)
+                || (x + PADDING_VERTICAL < other.x + other.width && other.x + other.width < x + width - PADDING_VERTICAL));
     }
 
     public void moveRight() {

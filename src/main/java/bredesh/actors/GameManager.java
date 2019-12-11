@@ -66,9 +66,9 @@ public class GameManager {
 
     public void playRound(int keyPressedEvent) {
         if (keyPressedEvent == KeyEvent.VK_LEFT) {
-            move(actors.get(GameManager.Actor.Boat), GameManager.Direction.LEFT);
+            moveLeft(actors.get(GameManager.Actor.Boat));
         } else if (keyPressedEvent == KeyEvent.VK_RIGHT) {
-            move(actors.get(GameManager.Actor.Boat), GameManager.Direction.RIGHT);
+            moveRight(actors.get(GameManager.Actor.Boat));
         }
 
         moveLeft(actors.get(GameManager.Actor.Airplane));
@@ -82,19 +82,14 @@ public class GameManager {
         moveParachutists();
     }
 
-    public void move(GUIActor guiActor, Direction direction) {
-        if (guiActor.canMoveByDirection(direction) && guiActor.canMoveBySpeed()) {
-            if (direction == GameManager.Direction.LEFT) {
-                guiActor.moveLeft();
-            } else if (direction == Direction.RIGHT) {
-                guiActor.moveRight();
-            }
+    public void moveLeft(GUIActor guiActor) {
+        if (guiActor.canMoveByDirection(Direction.LEFT) && guiActor.canMoveBySpeed()) {
+            guiActor.moveLeft();
         }
     }
-
-    public void moveLeft(GUIActor guiActor) {
-        if (guiActor.canMoveBySpeed()) {
-            guiActor.moveLeft();
+    public void moveRight(GUIActor guiActor) {
+        if (guiActor.canMoveByDirection(Direction.RIGHT) && guiActor.canMoveBySpeed()) {
+            guiActor.moveRight();
         }
     }
 
@@ -115,6 +110,7 @@ public class GameManager {
     public void dropParachute() {
         if (timeToDrop-- == 0) {
             timeToDrop = ThreadLocalRandom.current().nextInt(100, 7000);
+
             Image imageActors = GeneratorImageActors.generateImageActors(Actor.Parachutist);
             LocationActor locationActors = GeneratorLocationActors.generateLocationActors(actors.get(Actor.Airplane).getLocationActor(), imageActors);
             parachutists.add(GeneratorActors.generateActors(Actor.Parachutist, locationActors, imageActors));
@@ -127,7 +123,7 @@ public class GameManager {
             if (actors.get(Actor.Boat).getLocationActor().isTouching(parachutist.getLocationActor())) {
                 parachutistsToRemove.add(parachutist);
                 managedToCatch();
-            } else if (actors.get(Actor.Sea).getLocationActor().isTouching(parachutist.getLocationActor())) {
+            } else if (actors.get(Actor.Sea).getLocationActor().isHorizontalTouching(parachutist.getLocationActor())) {
                 parachutistsToRemove.add(parachutist);
                 failedToCatch();
             }
